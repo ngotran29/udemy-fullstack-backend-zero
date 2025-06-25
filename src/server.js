@@ -1,3 +1,5 @@
+const mysql = require('mysql2');
+
 require('dotenv').config()
 const express = require('express') //commonjs
 const configViewEngine = require('./config/viewEngine')
@@ -14,6 +16,30 @@ configViewEngine(app);
 
 //khai bao route
 app.use('/', webRoutes);
+
+
+//test connect db
+const connection = mysql.createConnection({
+  host: 'localhost',
+  port: '3307',
+  user: 'root',
+  password: '123123',
+  database: 'ntran'
+});
+
+//simple query
+connection.query(
+  'SELECT * FROM Users',
+  function (error, results, fields) {
+    if (error) {
+      console.error('Lỗi truy vấn:', error.message);
+      return;
+    }
+    console.log('>>> Results=', results);
+    console.log('>>> Fields=', fields);
+  }
+);
+
 
 app.listen(port, hostname,() => {
   console.log(`Example app listening on port ${port}`)
