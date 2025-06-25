@@ -1,9 +1,9 @@
-const mysql = require('mysql2');
 
 require('dotenv').config()
 const express = require('express') //commonjs
 const configViewEngine = require('./config/viewEngine')
 const webRoutes = require('./routes/web')
+const connection = require('./config/database') //import connection to db
 // console.log(">>> check env: ", process.env); //run de check thong tin moi truong
 
 const app = express() //app express
@@ -19,13 +19,7 @@ app.use('/', webRoutes);
 
 
 //test connect db
-const connection = mysql.createConnection({
-  host: 'localhost',
-  port: '3307',
-  user: 'root',
-  password: '123123',
-  database: 'ntran'
-});
+
 
 //simple query
 connection.query(
@@ -36,7 +30,6 @@ connection.query(
       return;
     }
     console.log('>>> Results=', results);
-    console.log('>>> Fields=', fields);
   }
 );
 
