@@ -22,16 +22,6 @@ app.use('/', webRoutes);
 
 
 //simple query
-connection.query(
-  'SELECT * FROM Users',
-  function (error, results, fields) {
-    if (error) {
-      console.error('Lỗi truy vấn:', error.message);
-      return;
-    }
-    console.log('>>> Results=', results);
-  }
-);
 
 
 app.listen(port, hostname,() => {

@@ -1,10 +1,14 @@
+const connection = require('../config/database'); // import connection to db
+
 const getHomepage = (req, res) => {
-    res.send('hi')
-}
-const renderSample = (req , res ) => {
-    res.render('sample.ejs')
-}
+    return res.render('home.ejs');
+};
+
+const renderSample = (req, res) => {
+    res.render('sample.ejs');
+};
 
 module.exports = {
-    getHomepage,renderSample
-}
+    getHomepage,
+    renderSample
+};

@@ -4,6 +4,6 @@ const router = express.Router();
 
 //router.method('/route', handler)
 router.get('/sample', renderSample);
-router.get('/abc', getHomepage);
+router.get('/home', getHomepage);
 
 module.exports = router;
